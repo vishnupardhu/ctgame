@@ -4,10 +4,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
-import 'package:puzzlegame/puzzle_game_screen.dart';
-import 'package:puzzlegame/test11.dart';
-
-import 'package:puzzlegame/test2.dart';
+import 'package:puzzlegame/puzzle_number.dart';
+import 'package:puzzlegame/puzzle_grid_five.dart';
+import 'package:puzzlegame/puzzle_grid_game.dart';
+import 'package:puzzlegame/puzzle_load_game.dart';
+import 'package:puzzlegame/puzzle_tic_toe.dart';
 // Make sure to import your PuzzleGameScreen
 
 void main() {
@@ -39,7 +40,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   img.Image? image;
-  final imagePath = 'assets/vis/ct.jpg'; // Update with your image asset path
+  final imagePath = 'assets/vis/vv.jpeg'; // Update with your image asset path
 
   redme() async {
     // XFile file = XFile(File(imagePath).path);
@@ -113,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/vis/ct2.jpg'),
+                image: AssetImage('assets/vis/vv.jpeg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -132,21 +133,47 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                 ElevatedButton(
+                  onPressed: () {
+         
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicToeGamePuzzle(),
+                      ),
+                    );
+                  },
+                  child: Text('Tic Toe Game '),
+                ),
+                 SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+         
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NumberPuzzleGame(),
+                      ),
+                    );
+                  },
+                  child: Text('Number Puzzle '),
+                ),
                 SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Generate puzzle pieces and navigate to PuzzleGameScreen
-                    List<img.Image> pieces = _generatePuzzlePieces();
+         
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PuzzleGameScreen(pieces: pieces),
+                        builder: (context) => PuzzleCtGAmethree(),
                       ),
                     );
                   },
-                  child: Text('Start Puzzle Game'),
+                  child: Text('Start 3 * 3 Puzzle '),
                 ),
                 SizedBox(
                   height: 20,
@@ -158,11 +185,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => loadGame2(),
+                        builder: (context) => PuzzleGridFourGame(),
                       ),
                     );
                   },
-                  child: Text('Start Puzzle Game gallery'),
+                  child: Text('Start 4 * 4 Puzzle '),
                 ),
                 SizedBox(
                   height: 20,
@@ -174,11 +201,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ImagePuzzleGame4(),
+                        builder: (context) => PuzzleGridFiveGAme(),
                       ),
                     );
                   },
-                  child: Text('Start Puzzle gallery'),
+                  child: Text('Start 5 * 5 Puzzle '),
                 ),
               ],
             ),
