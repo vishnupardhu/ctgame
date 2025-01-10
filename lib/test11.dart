@@ -18,8 +18,8 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
   File? _imageFile;
   img.Image? _image;
   late List<PuzzlePiece> puzzlePieces;
-  late List<int> shuffledIndices;
-  final int gridSize = 5; // 3x3 grid (9 pieces)
+  List<int>? shuffledIndices;
+  final int gridSize = 4; // 3x3 grid (9 pieces)
   bool isSolved = false;
 
   @override
@@ -70,7 +70,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
   // Shuffle the puzzle pieces
   void _shufflePuzzle() {
     setState(() {
-      shuffledIndices.shuffle(Random());
+      shuffledIndices?.shuffle(Random());
       isSolved = false; // Reset the solved state
     });
   }
@@ -89,8 +89,8 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
 
   // Check if the puzzle is solved
   bool _isPuzzleComplete() {
-    for (int i = 0; i < shuffledIndices.length; i++) {
-      if (shuffledIndices[i] != i) {
+    for (int i = 0; i < shuffledIndices!.length; i++) {
+      if (shuffledIndices![i] != i) {
         return false;
       }
     }
@@ -151,7 +151,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
       ),
       itemCount: gridSize * gridSize,
       itemBuilder: (context, index) {
-        int pieceIndex = shuffledIndices[index];
+        int pieceIndex = shuffledIndices![index];
         PuzzlePiece piece = puzzlePieces[pieceIndex];
         return DragTarget<int>(
           onAcceptWithDetails: (details) {
@@ -159,9 +159,9 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
               int draggedIndex = details.data;
 
               // Swap dragged and target pieces
-              int temp = shuffledIndices[draggedIndex];
-              shuffledIndices[draggedIndex] = shuffledIndices[index];
-              shuffledIndices[index] = temp;
+              int temp = shuffledIndices![draggedIndex];
+              shuffledIndices![draggedIndex] = shuffledIndices![index];
+              shuffledIndices![index] = temp;
 
               // Check if the puzzle is complete
               if (_isPuzzleComplete()) {
