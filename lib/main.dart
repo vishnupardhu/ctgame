@@ -1,19 +1,13 @@
-import 'dart:typed_data';
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:puzzlegame/puzzle_game_screen.dart';
-import 'package:puzzlegame/test10.dart';
 import 'package:puzzlegame/test11.dart';
 
 import 'package:puzzlegame/test2.dart';
-import 'package:puzzlegame/test5.dart';
-import 'package:puzzlegame/test8.dart';
-import 'package:puzzlegame/test9.dart';
 // Make sure to import your PuzzleGameScreen
 
 void main() {
@@ -27,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Puzzle Game',
+      title: 'Ct Puzzle',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

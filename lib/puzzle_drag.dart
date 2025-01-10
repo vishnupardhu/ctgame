@@ -52,7 +52,6 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                   },
                   onLeave: (data) {
                     // Handle when a draggable leaves the target area
-                    print("Piece left the target area: $data");
                   },
                   onAcceptWithDetails: (details) {
                     // Handle when the draggable is dropped (replaces onAccept)
@@ -80,9 +79,9 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
               Positioned.fill(
                 child: Draggable<int>(
                   data: index,
-                  child: PuzzlePiece(piece: puzzlePieces[index]),
                   feedback: PuzzlePiece(piece: puzzlePieces[index], isDragging: true),
-                  childWhenDragging: Container(), // Optional empty container when dragging
+                  childWhenDragging: Container(),
+                  child: PuzzlePiece(piece: puzzlePieces[index]), // Optional empty container when dragging
                 ),
               ),
             ],

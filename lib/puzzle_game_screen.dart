@@ -50,7 +50,6 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                    // print("Piece is moving over target area: ${details.localPosition}");
                   },
                   onLeave: (data) {
-                    print("Piece left the target area: $data");
                   },
                   onAcceptWithDetails: (details) {
                     final data = details.data;

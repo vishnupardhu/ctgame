@@ -129,6 +129,7 @@ class PuzzleGameScreen2 extends StatefulWidget {
   const PuzzleGameScreen2({super.key, required this.pieces});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PuzzleGameScreenState createState() => _PuzzleGameScreenState();
 }
 
@@ -224,7 +225,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen2> {
                         },
                         builder: (context, candidateData, rejectedData) {
                           return Container(
-                            color: Colors.blueGrey.withOpacity(0.2),
+                            color: Colors.blueGrey.withValues(alpha:0.2),
                             child: Center(
                               child: puzzlePositions[index] == null
                                   ? Container()

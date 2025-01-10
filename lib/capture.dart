@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class CaptureImage extends StatefulWidget {
+  const CaptureImage({super.key});
+
   @override
   // ignore: library_private_types_in_public_api
   _CaptureImageState createState() => _CaptureImageState();

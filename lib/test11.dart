@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,16 +17,11 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
   File? _imageFile;
   img.Image? _image;
   late List<PuzzlePiece> puzzlePieces;
-  List<int>? shuffledIndices;
+  List<int> shuffledIndices =[];
   final int gridSize = 4; // 3x3 grid (9 pieces)
   bool isSolved = false;
 
-  @override
-  void initState() {
-    super.initState();
-    puzzlePieces = [];
-    _loadImage();
-  }
+ 
 
   // Pick an image from the gallery
   Future<void> _pickImage() async {
@@ -43,7 +37,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
 
   // Load and split the image into puzzle pieces
   Future<void> _loadImage() async {
-    final ByteData data = await rootBundle.load('assets/vis/ct.jpg');
+    final ByteData data = await rootBundle.load('assets/vis/bg1.jpg');
     final Uint8List bytes = data.buffer.asUint8List();
     _image = img.decodeImage(Uint8List.fromList(bytes))!;
 
@@ -70,7 +64,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
   // Shuffle the puzzle pieces
   void _shufflePuzzle() {
     setState(() {
-      shuffledIndices?.shuffle(Random());
+      shuffledIndices.shuffle(Random());
       isSolved = false; // Reset the solved state
     });
   }
@@ -89,12 +83,18 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
 
   // Check if the puzzle is solved
   bool _isPuzzleComplete() {
-    for (int i = 0; i < shuffledIndices!.length; i++) {
-      if (shuffledIndices![i] != i) {
+    for (int i = 0; i < shuffledIndices.length; i++) {
+      if (shuffledIndices[i] != i) {
         return false;
       }
     }
     return true;
+  }
+   @override
+  void initState() {
+    super.initState();
+    puzzlePieces = [];
+    _loadImage();
   }
 
   @override
@@ -115,7 +115,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
           Expanded(
             child: Stack(
               children: [
-                if (isSolved) _buildSolvedPuzzle() else _buildPuzzleGrid(),
+                if (isSolved) _buildSolvedPuzzle() else (shuffledIndices.isEmpty ? SizedBox(height: 20,) : _buildPuzzleGrid()),
               ],
             ),
           ),
@@ -151,7 +151,7 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
       ),
       itemCount: gridSize * gridSize,
       itemBuilder: (context, index) {
-        int pieceIndex = shuffledIndices![index];
+        int pieceIndex = shuffledIndices[index];
         PuzzlePiece piece = puzzlePieces[pieceIndex];
         return DragTarget<int>(
           onAcceptWithDetails: (details) {
@@ -159,9 +159,9 @@ class _ImagePuzzleGameState extends State<ImagePuzzleGame4> {
               int draggedIndex = details.data;
 
               // Swap dragged and target pieces
-              int temp = shuffledIndices![draggedIndex];
-              shuffledIndices![draggedIndex] = shuffledIndices![index];
-              shuffledIndices![index] = temp;
+              int temp = shuffledIndices[draggedIndex];
+              shuffledIndices[draggedIndex] = shuffledIndices[index];
+              shuffledIndices[index] = temp;
 
               // Check if the puzzle is complete
               if (_isPuzzleComplete()) {
