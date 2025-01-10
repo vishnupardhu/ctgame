@@ -40,7 +40,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   img.Image? image;
-  final imagePath = 'assets/vis/vv.jpeg'; // Update with your image asset path
+  final imagePath = 'assets/vis/ct.jpg'; // Update with your image asset path
 
   redme() async {
     // XFile file = XFile(File(imagePath).path);
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/vis/vv.jpeg'),
+                image: AssetImage('assets/vis/ct.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

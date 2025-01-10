@@ -22,7 +22,10 @@ class _PuzzleCtGAmethreeState extends State<PuzzleCtGAmethree> {
 
  
  
-  List<String> puzzleims =['assets/puzzle/v1.jpg','assets/puzzle/v2.jpg','assets/puzzle/v3.jpg','assets/puzzle/v4.jpg','assets/puzzle/v5.jpg','assets/puzzle/v6.jpg','assets/puzzle/v7.jpg','assets/puzzle/v8.jpg','assets/puzzle/v9.jpg','assets/puzzle/v10.jpg','assets/puzzle/b1.jpg','assets/puzzle/b2.jpg','assets/puzzle/b3.jpg','assets/puzzle/b4.jpg','assets/puzzle/b5.jpg','assets/puzzle/b6.jpg','assets/puzzle/b7.jpg','assets/puzzle/b8.jpg','assets/puzzle/b9.jpg','assets/puzzle/b10.jpg','assets/puzzle/b11.jpg'];
+  
+ // List<String> puzzleims =['assets/puzzle/v1.jpg','assets/puzzle/v2.jpg','assets/puzzle/v3.jpg','assets/puzzle/v4.jpg','assets/puzzle/v5.jpg','assets/puzzle/v6.jpg','assets/puzzle/v7.jpg','assets/puzzle/v8.jpg','assets/puzzle/v9.jpg','assets/puzzle/v10.jpg','assets/puzzle/b1.jpg','assets/puzzle/b2.jpg','assets/puzzle/b3.jpg','assets/puzzle/b4.jpg','assets/puzzle/b5.jpg','assets/puzzle/b6.jpg','assets/puzzle/b7.jpg','assets/puzzle/b8.jpg','assets/puzzle/b9.jpg','assets/puzzle/b10.jpg','assets/puzzle/b11.jpg'];
+  List<String> puzzleims =['assets/puzzle/c1.jpg','assets/puzzle/c2.jpg','assets/puzzle/c3.jpg','assets/puzzle/c4.jpg','assets/puzzle/c5.jpg','assets/puzzle/c6.jpg','assets/puzzle/c7.jpg','assets/puzzle/c8.jpg','assets/puzzle/c9.jpg','assets/puzzle/c10.jpg','assets/puzzle/c11.jpg','assets/puzzle/c12.jpg'];
+   
    late String displayedString;
   void getRandomString() {
     final random = Random();
